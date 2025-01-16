@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ItemList from "./pages/ItemList";
 import AddItem from "./pages/AddItem";
+import AddPreview from "./pages/AddPreview";
 import UpdateItem from "./pages/UpdateItem";
 import ViewItem from "./pages/ViewItem";
 import DeleteItem from "./pages/DeleteItem";
@@ -27,6 +28,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<ItemList />} />
                     <Route path="/add" element={<AddItem />} />
+                    <Route path="/add/preview" element={<AddPreview />} />
                     <Route path="/update/:id" element={<UpdateItem />} />
                     <Route path="/view/:id" element={<ViewItem />} />
                     <Route path="/delete/:id" element={<DeleteItem />} />

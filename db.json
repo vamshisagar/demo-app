@@ -18,14 +18,9 @@
   },
   "items": [
     {
-      "name": "vamshi",
-      "description": "vamshi is eating chicken'",
+      "name": "aa",
+      "description": "aaaa",
       "id": 1
-    },
-    {
-      "name": "krishna",
-      "description": "krisha is eating mutton",
-      "id": 2
     }
   ]
 }

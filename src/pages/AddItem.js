@@ -1,12 +1,11 @@
 // src/pages/AddItem.js
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "../actions/itemActions";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addFormData, addItem, clearFormData } from "../actions/itemActions";
+import { useFormAction, useNavigate } from "react-router-dom";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 
-const AddItem = (prop) => {
-    console.log(prop);
+const AddItem = () => {
     const [formData, setFormData] = useState({ name: "", description: "" });
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,10 +14,20 @@ const AddItem = (prop) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const userformData = useSelector(
+        (state) => state.form?.userformData || null
+    );
+
+    useEffect(() => {
+        if (userformData) {
+            setFormData(userformData); // Populate only if userformData is not empty
+        }
+    }, []);
+
+    const handlePreview = (e) => {
         e.preventDefault();
-        dispatch(addItem(formData));
-        navigate("/");
+        dispatch(addFormData(formData));
+        navigate("/add/preview");
     };
 
     return (
@@ -26,7 +35,7 @@ const AddItem = (prop) => {
             <Row className="justify-content-center">
                 <Col md={6}>
                     <h2 className="text-center my-4">Add New Item</h2>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handlePreview}>
                         <Form.Group controlId="formName" className="mb-3">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
@@ -55,12 +64,15 @@ const AddItem = (prop) => {
                         <div className="d-flex justify-content-between">
                             <Button
                                 variant="secondary"
-                                onClick={() => navigate("/")}
+                                onClick={() => {
+                                    dispatch(clearFormData());
+                                    navigate("/");
+                                }}
                             >
                                 Cancel
                             </Button>
                             <Button type="submit" variant="primary">
-                                Add Item
+                                Preview
                             </Button>
                         </div>
                     </Form>

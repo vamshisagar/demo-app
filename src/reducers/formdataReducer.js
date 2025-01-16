@@ -1,15 +1,15 @@
 // src/reducers/itemReducer.js
 const initialState = {
-    formData: {},
+    userformData: null,
 };
 
 const formdataReducer = (state = initialState, action) => {
     switch (action.type) {
         case "ADD_FORM":
-            return { ...state, formData: action.payload };
+            return { userformData: action.payload };
         case "CLEAR_FORM":
             return {
-                formData: {},
+                userformData: null,
             };
         default:
             return state;
