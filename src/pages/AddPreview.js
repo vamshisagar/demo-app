@@ -10,7 +10,7 @@ const AddPreview = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const userformData = useSelector((state) => state.form?.userformData || {});
-    console.log(userformData);
+ 
 
     useEffect(() => {
         setFormData(userformData);
@@ -25,6 +25,7 @@ const AddPreview = () => {
 
     return (
         <Container>
+            <h2 className="text-center my-5">Preview Page</h2>
             <Row className="justify-content-center">
                 <Col md={6}>
                     <Table striped bordered hover>

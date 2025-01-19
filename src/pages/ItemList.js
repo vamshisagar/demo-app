@@ -8,8 +8,8 @@ import { Button, Table, Container, Row, Col } from "react-bootstrap";
 const ItemList = () => {
     const dispatch = useDispatch();
     const items = useSelector((state) => state.item.items);
-    
-    const[formData, SetformData] = useState({});
+
+    const [formData, SetformData] = useState({});
 
     useEffect(() => {
         dispatch(getItems());
@@ -21,7 +21,11 @@ const ItemList = () => {
                 <Col>
                     <h2 className="text-center">Item List</h2>
                     <div className="d-flex justify-content-end mb-3">
-                        <Link to="/add" state={formData} className="btn btn-primary">
+                        <Link
+                            to="/add"
+                            state={formData}
+                            className="btn btn-primary"
+                        >
                             Add New Item
                         </Link>
                     </div>
