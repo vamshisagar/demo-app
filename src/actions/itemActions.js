@@ -3,9 +3,9 @@ import axios from "axios";
 
 const API_URL = "http://localhost:3001/items";
 
-export const getItems = () => async (dispatch) => {
+export const setItems = () => async (dispatch) => {
     const response = await axios.get(API_URL);
-    dispatch({ type: "GET_ITEMS", payload: response.data });
+    dispatch({ type: "SET_ITEMS", payload: response.data });
 };
 
 export const addItem = (item) => async (dispatch) => {
@@ -19,8 +19,6 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const updateItem = (item) => async (dispatch) => {
-
-    
     await axios.put(`${API_URL}/${item.id}`, item);
     dispatch({ type: "UPDATE_ITEM", payload: item });
 };

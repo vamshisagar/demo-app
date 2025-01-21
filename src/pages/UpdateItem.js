@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     updateItem,
-    getItems,
+    setItems,
     addFormData,
     clearFormData,
 } from "../actions/itemActions";
@@ -55,7 +55,7 @@ const UpdateItem = () => {
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
-        dispatch(getItems());
+        dispatch(setItems());
         const itemToEdit = items.find((item) => item.id === parseInt(id));
 
         if (userformData) {

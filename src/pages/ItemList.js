@@ -1,7 +1,7 @@
 // src/pages/ItemList.js
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getItems } from "../actions/itemActions";
+import { setItems } from "../actions/itemActions";
 import { Link } from "react-router-dom";
 import { Button, Table, Container, Row, Col, Badge } from "react-bootstrap";
 
@@ -10,7 +10,7 @@ const ItemList = () => {
     const items = useSelector((state) => state.item.items);
 
     useEffect(() => {
-        dispatch(getItems());
+        dispatch(setItems());
     }, [dispatch]);
 
     return (
