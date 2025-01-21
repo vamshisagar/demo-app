@@ -60,10 +60,10 @@ const AddPreview = () => {
 
     return (
         <Container>
-            <h2 className="text-center my-1">Preview Page</h2>
-
             <Row className="shadow-lg justify-content-center rounded">
-                <Col md={10}>
+                <h2 className="text my-3">Preview Page</h2>
+                <hr />
+                <Col md={11}>
                     <div>
                         <h5 className="mt-4">Subject : {formData.subject}</h5>
                         <table

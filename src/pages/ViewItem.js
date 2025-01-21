@@ -14,11 +14,13 @@ const ViewItem = () => {
     }
 
     return (
-        <Container className="shadow p-3 mb-5 bg-white rounded mt-3">
-            <Row>
-                <Col md={10}>
-                    <div>
-                        <h5>Subject: {lsiData.subject}</h5>
+        <Container className="my-4">
+            <Row className="shadow bg-white rounded">
+                <h2 className="text my-3">View LSI</h2>
+                <hr />
+                <Col md={11}>
+                    <div className="mb-3">
+                        <p>Subject: {lsiData.subject}</p>
                         <div
                             className="table-container mt-2"
                             dangerouslySetInnerHTML={{
@@ -26,7 +28,7 @@ const ViewItem = () => {
                             }}
                         />
                         <Link to={"/"} className="btn btn-primary">
-                            Close{" "}
+                            Close
                         </Link>
                     </div>
                 </Col>

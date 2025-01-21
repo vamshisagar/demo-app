@@ -59,13 +59,13 @@ const UpdatePreview = () => {
     };
 
     return (
-        <Container>
-            <h2 className="text-center my-1">Preview Page</h2>
-
+        <Container className="my-4">
             <Row className="shadow-lg rounded justify-content-center mt-2">
-                <Col md={10}>
+                <h2 className="text my-3">Preview Page</h2>
+                <hr />
+                <Col md={11}>
                     <div>
-                        <h5 className="mt-3">Subject : {formData.subject}</h5>
+                        <p>Subject : {formData.subject}</p>
                         <table
                             ref={lsiHtmlRef}
                             style={{
@@ -356,7 +356,7 @@ const UpdatePreview = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="my-2">
+                    <div className="my-3">
                         <Button
                             variant="secondary"
                             onClick={() => {

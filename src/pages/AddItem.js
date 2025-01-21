@@ -168,7 +168,7 @@ const AddItem = () => {
 
     const validate = () => {
         const newErrors = {};
-        if (!formData.lsi) newErrors.lsi = "LSI# is required";
+        if (!formData.lsi) newErrors.lsi = "LSI is required";
         if (!formData.startTime) newErrors.startTime = "Start time is required";
         if (!formData.description)
             newErrors.description = "Description is required";
@@ -389,10 +389,11 @@ const AddItem = () => {
     );
 
     return (
-        <Container>
+        <Container className="my-4">
             <Row className="shadow-lg justify-content-center rounded">
-                <Col md={10}>
-                    <h2 className="text-center my-4">Add New Item</h2>
+                <h2 className="text my-3">Create New LSI</h2>
+                <hr />
+                <Col md={11}>
                     <Form onSubmit={handlePreview}>
                         {renderFormFields()}
                         <div className="my-4">
@@ -415,6 +416,7 @@ const AddItem = () => {
                         </div>
                     </Form>
                 </Col>
+                
             </Row>
         </Container>
     );

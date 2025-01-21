@@ -114,10 +114,11 @@ const UpdateItem = () => {
     };
 
     return (
-        <Container>
-            <Row className="shadow-lg bg-white rounded justify-content-center">
-                <Col md={10}>
-                    <h2 className="text-center my-4">Edit Item</h2>
+        <Container className="my-4">
+            <Row className="shadow-lg rounded justify-content-center">
+                <h2 className="text my-3">Edit Item</h2>
+                <hr />
+                <Col md={11}>
                     <Form onSubmit={handlePreview}>
                         <Row>
                             <Col md={4}>
