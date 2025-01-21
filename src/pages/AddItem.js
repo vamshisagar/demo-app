@@ -45,7 +45,10 @@ const AddItem = () => {
         useState(false);
 
     const handleChange = (e) => {
+        const { name, value } = e.target;
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        // Clear the error for the field being modified
+        setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
     };
 
     const generateInvestigatingDescription = (team, locations, impactType) => {
@@ -150,6 +153,8 @@ const AddItem = () => {
             ...prevState,
             description: value,
         }));
+        // Clear the error for the description field
+        setErrors((prevErrors) => ({ ...prevErrors, description: "" }));
     };
 
     const handlePreview = (e) => {
@@ -385,7 +390,7 @@ const AddItem = () => {
 
     return (
         <Container>
-            <Row className="justify-content-center">
+            <Row className="shadow-lg justify-content-center rounded">
                 <Col md={10}>
                     <h2 className="text-center my-4">Add New Item</h2>
                     <Form onSubmit={handlePreview}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, clearFormData, updateItem } from "../actions/itemActions";
+import { clearFormData, updateItem, addFormData } from "../actions/itemActions";
 import { useNavigate } from "react-router-dom";
 import { Container, Form, Button, Row, Col, Table } from "react-bootstrap";
 
@@ -61,11 +61,11 @@ const UpdatePreview = () => {
     return (
         <Container>
             <h2 className="text-center my-1">Preview Page</h2>
-            <hr />
-            <Row className="justify-content-center">
+
+            <Row className="shadow-lg rounded justify-content-center mt-2">
                 <Col md={10}>
                     <div>
-                        <h5>Subject : {formData.subject}</h5>
+                        <h5 className="mt-3">Subject : {formData.subject}</h5>
                         <table
                             ref={lsiHtmlRef}
                             style={{
@@ -359,7 +359,10 @@ const UpdatePreview = () => {
                     <div className="my-2">
                         <Button
                             variant="secondary"
-                            onClick={() => navigate(`/add`)}
+                            onClick={() => {
+                                dispatch(addFormData(formData));
+                                navigate(`/update/${formData.id}`);
+                            }}
                         >
                             Back
                         </Button>
@@ -369,7 +372,7 @@ const UpdatePreview = () => {
                             onClick={handleSubmit}
                             className="mx-3"
                         >
-                            Add
+                            Update
                         </Button>
                     </div>
                 </Col>

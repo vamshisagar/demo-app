@@ -13,7 +13,7 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 const App = () => {
     return (
         <Router>
-            <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
+            {/* <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
                 <Container>
                     <Navbar.Brand href="/">CRUD App</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,7 +24,7 @@ const App = () => {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-            </Navbar>
+            </Navbar> */}
             <Container>
                 <Routes>
                     <Route path="/" element={<ItemList />} />

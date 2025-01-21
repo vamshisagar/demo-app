@@ -14,11 +14,11 @@ const ViewItem = () => {
     }
 
     return (
-        <Container>
+        <Container className="shadow p-3 mb-5 bg-white rounded mt-3">
             <Row>
                 <Col md={10}>
                     <div>
-                        <p>Subject: {lsiData.subject}</p>
+                        <h5>Subject: {lsiData.subject}</h5>
                         <div
                             className="table-container mt-2"
                             dangerouslySetInnerHTML={{

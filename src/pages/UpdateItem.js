@@ -1,7 +1,12 @@
 // src/pages/UpdateItem.js
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateItem, getItems, addFormData } from "../actions/itemActions";
+import {
+    updateItem,
+    getItems,
+    addFormData,
+    clearFormData,
+} from "../actions/itemActions";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { MultiSelect } from "react-multi-select-component";
@@ -23,6 +28,10 @@ const UpdateItem = () => {
     const navigate = useNavigate();
 
     const items = useSelector((state) => state.item.items);
+    const userformData = useSelector(
+        (state) => state.form?.userformData || null
+    );
+
     const [formData, setFormData] = useState({
         team: [
             { label: "Application Insights", value: "Application-Insights" },
@@ -48,9 +57,16 @@ const UpdateItem = () => {
     useEffect(() => {
         dispatch(getItems());
         const itemToEdit = items.find((item) => item.id === parseInt(id));
-        if (itemToEdit) {
+
+        if (userformData) {
+            setFormData(userformData);
+        } else {
             setFormData(itemToEdit);
         }
+
+        // if (itemToEdit) {
+        //     setFormData(itemToEdit);
+        // }
     }, [dispatch]);
 
     const handleChange = (e) => {
@@ -89,7 +105,7 @@ const UpdateItem = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handlePreview = (e) => {
         e.preventDefault();
         if (validate()) {
             dispatch(addFormData(formData));
@@ -99,10 +115,10 @@ const UpdateItem = () => {
 
     return (
         <Container>
-            <Row className="justify-content-center">
+            <Row className="shadow-lg bg-white rounded justify-content-center">
                 <Col md={10}>
                     <h2 className="text-center my-4">Edit Item</h2>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handlePreview}>
                         <Row>
                             <Col md={4}>
                                 <Form.Group>
@@ -319,10 +335,13 @@ const UpdateItem = () => {
                                 onChange={handleChange}
                             />
                         </Form.Group>
-                        <div className="mt-4">
+                        <div className="mt-4 my-4">
                             <Button
                                 variant="secondary"
-                                onClick={() => navigate("/")}
+                                onClick={() => {
+                                    dispatch(clearFormData());
+                                    navigate("/");
+                                }}
                             >
                                 Cancel
                             </Button>
