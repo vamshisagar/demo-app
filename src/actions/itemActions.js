@@ -19,6 +19,8 @@ export const deleteItem = (id) => async (dispatch) => {
 };
 
 export const updateItem = (item) => async (dispatch) => {
+
+    
     await axios.put(`${API_URL}/${item.id}`, item);
     dispatch({ type: "UPDATE_ITEM", payload: item });
 };

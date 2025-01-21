@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getItems } from "../actions/itemActions";
 import { Link } from "react-router-dom";
-import { Button, Table, Container, Row, Col } from "react-bootstrap";
+import { Button, Table, Container, Row, Col, Badge } from "react-bootstrap";
 
 const ItemList = () => {
     const dispatch = useDispatch();
     const items = useSelector((state) => state.item.items);
-
-    const [formData, SetformData] = useState({});
 
     useEffect(() => {
         dispatch(getItems());
@@ -23,7 +21,7 @@ const ItemList = () => {
                     <div className="d-flex justify-content-end mb-3">
                         <Link
                             to="/add"
-                            state={formData}
+                            //state={formData}
                             className="btn btn-primary"
                         >
                             Add New Item
@@ -32,19 +30,52 @@ const ItemList = () => {
                     <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Actions</th>
+                                <th>item</th>
+                                <th>Status</th>
+                                <th>Service</th>
+                                <th>Start Time</th>
+                                <th>Next Update</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {items &&
                                 items.map((item, index) => (
                                     <tr key={item.id}>
-                                        <td>{index + 1}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.description}</td>
+                                        <td>{item.lsi}</td>
+                                        <td className="align-middle">
+                                            {item.status ===
+                                                "Investigating" && (
+                                                <Badge pill bg="danger">
+                                                    Investigating
+                                                </Badge>
+                                            )}
+                                            {item.status === "Mitigated" && (
+                                                <Badge pill bg="success">
+                                                    Mitigated
+                                                </Badge>
+                                            )}
+                                            {item.status === "Mitigating" && (
+                                                <Badge
+                                                    pill
+                                                    bg="warning"
+                                                    text="dark"
+                                                >
+                                                    Mitigating
+                                                </Badge>
+                                            )}
+                                        </td>
+                                        <td>
+                                            {item.team
+                                                .map((item) => item.label)
+                                                .join(",")}
+                                        </td>
+                                        <td>{item.startTime}</td>
+                                        <td>
+                                            {item.status === "Mitigated"
+                                                ? ""
+                                                : item.nextUpdate}
+                                        </td>
                                         <td>
                                             <Link
                                                 to={`/view/${item.id}`}

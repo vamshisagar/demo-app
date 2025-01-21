@@ -7,6 +7,7 @@ import AddPreview from "./pages/AddPreview";
 import UpdateItem from "./pages/UpdateItem";
 import ViewItem from "./pages/ViewItem";
 import DeleteItem from "./pages/DeleteItem";
+import UpdatePreview from "./pages/UpdatePreview";
 import { Container, Navbar, Nav } from "react-bootstrap";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/add" element={<AddItem />} />
                     <Route path="/add/preview" element={<AddPreview />} />
                     <Route path="/update/:id" element={<UpdateItem />} />
+                    <Route path="/Edit/preview" element={<UpdatePreview />} />
                     <Route path="/view/:id" element={<ViewItem />} />
                     <Route path="/delete/:id" element={<DeleteItem />} />
                 </Routes>

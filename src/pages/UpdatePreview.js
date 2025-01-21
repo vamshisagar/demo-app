@@ -1,11 +1,10 @@
-// src/pages/AddItem.js
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, clearFormData } from "../actions/itemActions";
+import { addItem, clearFormData, updateItem } from "../actions/itemActions";
 import { useNavigate } from "react-router-dom";
 import { Container, Form, Button, Row, Col, Table } from "react-bootstrap";
 
-const AddPreview = () => {
+const UpdatePreview = () => {
     const [formData, setFormData] = useState({
         team: [
             { label: "Application Insights", value: "Application-Insights" },
@@ -53,7 +52,8 @@ const AddPreview = () => {
             ...formData,
             lsiHtml: lsiHtmlRef.current.outerHTML,
         };
-        dispatch(addItem(newformData));
+        console.log(newformData);
+        dispatch(updateItem(newformData));
         dispatch(clearFormData());
         navigate("/");
     };
@@ -359,7 +359,7 @@ const AddPreview = () => {
                     <div className="my-2">
                         <Button
                             variant="secondary"
-                            onClick={() => navigate("/add")}
+                            onClick={() => navigate(`/add`)}
                         >
                             Back
                         </Button>
@@ -378,4 +378,4 @@ const AddPreview = () => {
     );
 };
 
-export default AddPreview;
+export default UpdatePreview;
