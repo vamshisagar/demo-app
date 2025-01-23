@@ -389,7 +389,7 @@ const AddItem = () => {
     );
 
     return (
-        <Container className="my-4">
+        <Container className="my-4" style={{width: "90%"}}>
             <Row className="shadow-lg justify-content-center rounded">
                 <h2 className="text my-3">Create New LSI</h2>
                 <hr />

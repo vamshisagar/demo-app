@@ -59,13 +59,13 @@ const AddPreview = () => {
     };
 
     return (
-        <Container>
+        <Container className="my-4" style={{ width: "90%" }}>
             <Row className="shadow-lg justify-content-center rounded">
                 <h2 className="text my-3">Preview Page</h2>
                 <hr />
                 <Col md={11}>
                     <div>
-                        <h5 className="mt-4">Subject : {formData.subject}</h5>
+                        <p className="mt-1">Subject : {formData.subject}</p>
                         <table
                             ref={lsiHtmlRef}
                             style={{
@@ -356,7 +356,7 @@ const AddPreview = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="my-2">
+                    <div className="my-4">
                         <Button
                             variant="secondary"
                             onClick={() => navigate("/add")}
